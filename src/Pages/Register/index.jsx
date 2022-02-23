@@ -1,6 +1,7 @@
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
 import Select from "../../Components/Select";
+import InputPassword from "../../Components/InputPassword";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -72,7 +73,7 @@ const Register = () => {
           placeholder="Digite aqui seu email"
           type="email"
         />
-        <Input
+        <InputPassword
           label="Senha"
           register={register}
           name="password"
@@ -80,7 +81,7 @@ const Register = () => {
           placeholder="Digite aqui sua senha"
           type="password"
         />
-        <Input
+        <InputPassword
           label="Confirmar senha"
           register={register}
           name="confirmPassword"

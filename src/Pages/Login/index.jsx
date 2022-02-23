@@ -1,5 +1,6 @@
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
+import InputPassword from "../../Components/InputPassword";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -43,7 +44,7 @@ const Login = () => {
             placeholder="exemplo@gmail.com"
             type="email"
           />
-          <Input
+          <InputPassword
             label="Senha"
             register={register}
             name="password"
