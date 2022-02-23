@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const history = useHistory();
@@ -25,6 +26,7 @@ const Login = () => {
   const handleLogin = (data) => {
     history.push("/home");
     console.log(data);
+    toast.success("Login feito com successo!");
   };
 
   return (

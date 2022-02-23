@@ -1,10 +1,12 @@
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
+import Select from "../../Components/Select";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { Container } from "./styles";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const history = useHistory();
@@ -40,6 +42,7 @@ const Register = () => {
   const handleLogin = (data) => {
     history.push("/");
     console.log(data);
+    toast.success("Cadastro feito com successo!");
   };
 
   return (
@@ -85,16 +88,7 @@ const Register = () => {
           placeholder="Confirme aqui sua senha"
           type="password"
         />
-        <div>
-          <select name="Selecionar módulo" {...register("module")}>
-            <option value={"M1"}>Primeiro módulo</option>
-            <option value={"M2"}>Segundo módulo</option>
-            <option value={"M3"}>Terceiro módulo</option>
-            <option value={"M4"}>Quarto módulo</option>
-            <option value={"M5"}>Quinto módulo</option>
-            <option value={"M6"}>Sexto módulo</option>
-          </select>
-        </div>
+        <Select register={register} name="module" />
         <Button text="Cadastrar" type="submit" />
       </form>
     </Container>
