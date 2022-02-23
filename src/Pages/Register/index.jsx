@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { Container } from "./styles";
 import { toast } from "react-toastify";
+import { primaryDisable, grey3 } from "../../styles/Global";
+import { grey1 } from "../../styles/Global";
 
 const Register = () => {
   const history = useHistory();
@@ -50,7 +52,12 @@ const Register = () => {
     <Container>
       <div>
         <h1>Kenzie Hub</h1>
-        <Button text="Voltar" type="button" onClick={() => history.push("/")} />
+        <Button
+          text="Voltar"
+          type="button"
+          style={grey3}
+          onClick={() => history.push("/")}
+        />
       </div>
       <form onSubmit={handleSubmit(handleLogin)}>
         <div>
@@ -90,7 +97,7 @@ const Register = () => {
           type="password"
         />
         <Select register={register} name="module" />
-        <Button text="Cadastrar" type="submit" />
+        <Button text="Cadastrar" type="submit" style={primaryDisable} />
       </form>
     </Container>
   );

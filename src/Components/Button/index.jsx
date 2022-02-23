@@ -1,10 +1,10 @@
-const Button = ({ text, type, ...rest }) => {
+import { Buttonstyle } from "./styles.js";
+
+const Button = ({ text, type, style, ...rest }) => {
   return (
-    <div>
-      <button type={type} {...rest}>
-        {text}
-      </button>
-    </div>
+    <Buttonstyle type={type} backgroundColor={style} {...rest}>
+      {text}
+    </Buttonstyle>
   );
 };
 export default Button;

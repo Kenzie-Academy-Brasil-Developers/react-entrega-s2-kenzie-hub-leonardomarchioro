@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     *{
         margin: 0;
         padding: 0;
@@ -39,3 +39,14 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 `;
+
+export const colorPrimary = "#FF577F";
+export const primary50 = "#FF427F";
+export const primaryDisable = "#59323F";
+export const grey0 = "#F8F9FA";
+export const grey1 = "#868E96";
+export const grey2 = "#343B41";
+export const grey3 = "#212529";
+export const grey4 = "#121214";
+export const sucess = "#3FE864";
+export const negative = "#E83F5B";

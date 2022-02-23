@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BiShow } from "react-icons/bi";
+import { BiShow, BiHide } from "react-icons/bi";
 import { Container } from "./style.js";
 
 const InputPassword = ({ label, register, name, error, ...rest }) => {
@@ -11,10 +11,12 @@ const InputPassword = ({ label, register, name, error, ...rest }) => {
   return (
     <Container>
       <label>{label}</label>
-      <input {...register(name)} {...rest} type={type} />
-      <button onClick={showPassword} type="button">
-        <BiShow />
-      </button>
+      <div>
+        <input {...register(name)} {...rest} type={type} />
+        <button onClick={showPassword} type="button">
+          {type === "password" ? <BiShow /> : <BiHide />}
+        </button>
+      </div>
       <div>{!!error && <span>{error}</span>}</div>
     </Container>
   );

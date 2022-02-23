@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { colorPrimary, grey1 } from "../../styles/Global";
+import Logo from "../../assets/logo";
 
 const Login = () => {
   const history = useHistory();
@@ -32,7 +34,7 @@ const Login = () => {
 
   return (
     <Container>
-      <h1>Kenzie Hub</h1>
+      <Logo />
       <form onSubmit={handleSubmit(handleLogin)}>
         <h3>Login</h3>
         <div>
@@ -53,13 +55,14 @@ const Login = () => {
             type="password"
           />
         </div>
-        <Button text="Entrar" type="submit" />
+        <Button text="Entrar" type="submit" style={colorPrimary} />
         <div>
           <span>Ainda não possuí uma conta?</span>
         </div>
         <Button
           text="Cadastrar-se"
           type="button"
+          style={grey1}
           onClick={() => history.push("/register")}
         />
       </form>

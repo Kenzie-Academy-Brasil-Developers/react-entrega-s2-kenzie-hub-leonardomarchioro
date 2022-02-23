@@ -1,4 +1,4 @@
-import GlobalStyle from "./styles/Global";
+import { GlobalStyle } from "./styles/Global";
 import Routes from "./Routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
