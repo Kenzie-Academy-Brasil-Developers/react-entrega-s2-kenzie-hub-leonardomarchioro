@@ -6,13 +6,23 @@ import { grey3, grey2 } from "../../styles/Global";
 import ListTechs from "../../Components/ListTechs";
 import { useState } from "react";
 import ModalAddTech from "../../Components/ModalAddTech";
+import ModalEdit from "../../Components/ModalEdit";
 
 const Home = () => {
   const [techList, setTechList] = useState([]);
   const [addTech, setAddTech] = useState(false);
+  const [editAct, setEditAct] = useState(false);
+  const [idCard, setIdCard] = useState(0);
+  const [cardEditNow, setCardEditNow] = useState();
 
   const addNewTech = () => {
     setAddTech(true);
+  };
+
+  const editTech = (id) => {
+    const edit = techList.find((tech) => tech.id === id);
+    setEditAct(true);
+    setCardEditNow(edit);
   };
 
   return (
@@ -30,13 +40,25 @@ const Home = () => {
             onClick={addNewTech}
           />
         </ContainerAddTech>
-        <ListTechs techList={techList} />
+        <ListTechs techList={techList} editTech={editTech} />
       </main>
       {addTech && (
         <ModalAddTech
           setAddTech={setAddTech}
           setTechList={setTechList}
           techList={techList}
+          setIdCard={setIdCard}
+          idCard={idCard}
+        />
+      )}
+      {editAct && (
+        <ModalEdit
+          setEditAct={setEditAct}
+          setTechList={setTechList}
+          techList={techList}
+          cardEditNow={cardEditNow}
+          setIdCard={setIdCard}
+          idCard={idCard}
         />
       )}
     </Body>

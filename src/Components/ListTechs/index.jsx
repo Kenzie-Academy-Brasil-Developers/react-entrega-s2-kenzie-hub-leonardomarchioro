@@ -1,14 +1,7 @@
 import CardTech from "../CardTech";
 import { SvgFake, ContainerListCards } from "./style";
 
-const ListTechs = ({ techList }) => {
-  const editTech = (id) => {
-    console.log(id);
-    const edit = techList.find((tech, index) => index == id);
-    console.log(edit);
-    console.log(techList);
-  };
-
+const ListTechs = ({ techList, editTech }) => {
   return (
     <section>
       {techList.length > 0 ? (
@@ -17,7 +10,7 @@ const ListTechs = ({ techList }) => {
             return (
               <CardTech
                 key={index}
-                id={index}
+                id={tech.id}
                 nameTech={tech.name}
                 levelTech={tech.level}
                 editTech={editTech}

@@ -7,7 +7,13 @@ import { toast } from "react-toastify";
 import { colorPrimary, primary50, grey1, grey2 } from "../../styles/Global";
 import { ContainerModal, Modal, ContainerSelect, Label } from "./style";
 
-const ModalAddTech = ({ setAddTech, setTechList, techList }) => {
+const ModalAddTech = ({
+  setAddTech,
+  setTechList,
+  techList,
+  setIdCard,
+  idCard,
+}) => {
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
     level: yup.string().required("Campo obrigatório"),
@@ -22,7 +28,8 @@ const ModalAddTech = ({ setAddTech, setTechList, techList }) => {
   });
 
   const add = (data) => {
-    setTechList([...techList, data]);
+    setIdCard(idCard + 1);
+    setTechList([...techList, { ...data, id: idCard }]);
     toast.success("Tecnologia cadastrada com sucesso!");
     setAddTech(false);
   };
