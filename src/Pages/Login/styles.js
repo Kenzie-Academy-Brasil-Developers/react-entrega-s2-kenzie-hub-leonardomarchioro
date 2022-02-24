@@ -8,11 +8,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  /* svg {
-    width: 145px;
-    height: 20px;
-    margin-bottom: 35px;
-  } */
   form {
     background-color: var(--grey-3);
     display: flex;
@@ -32,5 +27,6 @@ export const Container = styled.div`
     color: var(--grey-1);
     font-size: 12px;
     font-weight: 600;
+    margin: 34px 0px 22px 0px;
   }
 `;

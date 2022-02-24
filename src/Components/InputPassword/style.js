@@ -14,9 +14,11 @@ export const Container = styled.div`
     font-weight: 400;
     padding-bottom: 22px;
   }
-  div {
+
+  section {
     display: flex;
   }
+
   input {
     width: 329px;
     height: 48px;
@@ -26,10 +28,22 @@ export const Container = styled.div`
     position: relative;
     left: 6px;
     background-color: var(--grey-2);
+    color: var(--grey-0);
   }
+
   input &::placeholder {
     color: #868e96;
   }
+
+  input:focus {
+    border: 1px solid #f8f9fa;
+    color: var(--grey-0);
+  }
+
+  input:focus::-webkit-input-placeholder {
+    color: var(--grey-0);
+  }
+
   button {
     background-color: transparent;
     border: transparent;
@@ -37,6 +51,16 @@ export const Container = styled.div`
     right: 20px;
   }
 
-  span {
+  button svg {
+    color: var(--grey-0);
+  }
+
+  div {
+    width: 100%;
+    padding: 7px;
+    height: 25px;
+    color: var(--grey-1);
+    font-size: 12px;
+    font-weight: 600;
   }
 `;

@@ -22,10 +22,27 @@ export const ContainerInput = styled.div`
     border: transparent;
     padding: 0px 16px 0 16px;
     background-color: var(--grey-2);
+    color: var(--grey-0);
   }
+
   input &::placeholder {
     color: #868e96;
   }
-  span {
+
+  input:focus {
+    border: 1px solid #f8f9fa;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    color: var(--grey-0);
+  }
+
+  div {
+    width: 100%;
+    padding: 7px;
+    height: 25px;
+    color: var(--grey-1);
+    font-size: 12px;
+    font-weight: 600;
   }
 `;

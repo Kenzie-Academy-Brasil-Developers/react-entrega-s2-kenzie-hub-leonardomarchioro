@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { colorPrimary, grey1 } from "../../styles/Global";
+import { colorPrimary, grey1, primary50, grey2 } from "../../styles/Global";
 import Logo from "../../assets/logo";
 
 const Login = () => {
@@ -43,7 +43,7 @@ const Login = () => {
             register={register}
             name="email"
             error={errors.email?.message}
-            placeholder="exemplo@gmail.com"
+            placeholder="exemplo@email.com"
             type="email"
           />
           <InputPassword
@@ -55,14 +55,20 @@ const Login = () => {
             type="password"
           />
         </div>
-        <Button text="Entrar" type="submit" style={colorPrimary} />
-        <div>
-          <span>Ainda não possuí uma conta?</span>
-        </div>
+        <Button
+          text="Entrar"
+          type="submit"
+          style={colorPrimary}
+          hover={primary50}
+        />
+
+        <span>Ainda não possuí uma conta?</span>
+
         <Button
           text="Cadastrar-se"
           type="button"
           style={grey1}
+          hover={grey2}
           onClick={() => history.push("/register")}
         />
       </form>

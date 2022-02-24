@@ -38,6 +38,9 @@ export const GlobalStyle = createGlobalStyle`
     a{
         text-decoration: none;
     }
+    .Toastify__toast-theme--light {
+    background-color: var(--grey-2);
+  }
 `;
 
 export const colorPrimary = "#FF577F";

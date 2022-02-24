@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BiShow, BiHide } from "react-icons/bi";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { Container } from "./style.js";
 
 const InputPassword = ({ label, register, name, error, ...rest }) => {
@@ -11,12 +11,12 @@ const InputPassword = ({ label, register, name, error, ...rest }) => {
   return (
     <Container>
       <label>{label}</label>
-      <div>
+      <section>
         <input {...register(name)} {...rest} type={type} />
         <button onClick={showPassword} type="button">
-          {type === "password" ? <BiShow /> : <BiHide />}
+          {type === "password" ? <MdVisibility /> : <MdVisibilityOff />}
         </button>
-      </div>
+      </section>
       <div>{!!error && <span>{error}</span>}</div>
     </Container>
   );

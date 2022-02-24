@@ -1,8 +1,13 @@
 import { Buttonstyle } from "./styles.js";
 
-const Button = ({ text, type, style, ...rest }) => {
+const Button = ({ text, type, style, hover, ...rest }) => {
   return (
-    <Buttonstyle type={type} backgroundColor={style} {...rest}>
+    <Buttonstyle
+      type={type}
+      backgroundColor={style}
+      backgroundHover={hover}
+      {...rest}
+    >
       {text}
     </Buttonstyle>
   );

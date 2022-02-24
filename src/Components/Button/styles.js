@@ -9,4 +9,8 @@ export const Buttonstyle = styled.button`
   border: transparent;
   border-radius: 4px;
   color: #ffffff;
+
+  &:hover {
+    background: ${(props) => props.backgroundHover};
+  }
 `;

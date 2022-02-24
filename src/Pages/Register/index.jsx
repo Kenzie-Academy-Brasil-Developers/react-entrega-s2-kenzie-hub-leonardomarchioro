@@ -6,10 +6,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { Container } from "./styles";
+import { Container, ContainerButton } from "./styles";
 import { toast } from "react-toastify";
-import { primaryDisable, grey3 } from "../../styles/Global";
-import { grey1 } from "../../styles/Global";
+import { colorPrimary, primary50, grey3, grey2 } from "../../styles/Global";
+import Logo from "../../assets/logo";
 
 const Register = () => {
   const history = useHistory();
@@ -50,20 +50,23 @@ const Register = () => {
 
   return (
     <Container>
-      <div>
-        <h1>Kenzie Hub</h1>
+      <header>
+        <div>
+          <Logo />
+        </div>
         <Button
           text="Voltar"
           type="button"
           style={grey3}
+          hover={grey2}
           onClick={() => history.push("/")}
         />
-      </div>
+      </header>
       <form onSubmit={handleSubmit(handleLogin)}>
-        <div>
+        <header>
           <h3>Crie sua conta</h3>
           <p>Rapido e grátis, vamos nessa</p>
-        </div>
+        </header>
         <Input
           label="Nome"
           register={register}
@@ -97,7 +100,14 @@ const Register = () => {
           type="password"
         />
         <Select register={register} name="module" />
-        <Button text="Cadastrar" type="submit" style={primaryDisable} />
+        <ContainerButton>
+          <Button
+            text="Cadastrar"
+            type="submit"
+            style={colorPrimary}
+            hover={primary50}
+          />
+        </ContainerButton>
       </form>
     </Container>
   );
