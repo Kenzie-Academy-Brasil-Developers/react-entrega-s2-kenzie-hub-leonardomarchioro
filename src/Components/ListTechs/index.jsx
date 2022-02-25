@@ -11,8 +11,8 @@ const ListTechs = ({ techList, editTech }) => {
               <CardTech
                 key={index}
                 id={tech.id}
-                nameTech={tech.name}
-                levelTech={tech.level}
+                nameTech={tech.title}
+                levelTech={tech.status}
                 editTech={editTech}
               />
             );

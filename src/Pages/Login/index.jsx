@@ -5,12 +5,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Container } from "./styles";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { colorPrimary, grey1, primary50, grey2 } from "../../styles/Global";
 import Logo from "../../assets/logo";
+import api from "../../Services/api";
 
-const Login = () => {
+const Login = ({ authentic, setAuthentic }) => {
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -27,10 +28,23 @@ const Login = () => {
   });
 
   const handleLogin = (data) => {
-    history.push("/home");
-    console.log(data);
-    toast.success("Login feito com successo!");
+    api
+      .post("/sessions", data)
+      .then((response) => {
+        const { token, user } = response.data;
+
+        localStorage.setItem("@Kenziehub:tokenUser", JSON.stringify(token));
+        localStorage.setItem("@Kenziehub:infoUser", JSON.stringify(user));
+        toast.success("Login feito com successo!");
+        setAuthentic(true);
+        return history.push("/home");
+      })
+      .catch(() => toast.error("Email ou senha incorretos"));
   };
+
+  if (authentic) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Container>

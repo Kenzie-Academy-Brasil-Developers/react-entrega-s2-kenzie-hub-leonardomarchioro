@@ -6,17 +6,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { colorPrimary, primary50, grey1, grey2 } from "../../styles/Global";
 import { ContainerModal, Modal, ContainerSelect, Label } from "./style";
+import api from "../../Services/api";
 
-const ModalAddTech = ({
-  setAddTech,
-  setTechList,
-  techList,
-  setIdCard,
-  idCard,
-}) => {
+const ModalAddTech = ({ setAddTech, token, updateList }) => {
   const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-    level: yup.string().required("Campo obrigatório"),
+    title: yup.string().required("Campo obrigatório"),
+    status: yup.string().required("Campo obrigatório"),
   });
 
   const {
@@ -28,10 +23,18 @@ const ModalAddTech = ({
   });
 
   const add = (data) => {
-    setIdCard(idCard + 1);
-    setTechList([...techList, { ...data, id: idCard }]);
-    toast.success("Tecnologia cadastrada com sucesso!");
-    setAddTech(false);
+    api
+      .post("/users/techs", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => {
+        setAddTech(false);
+        updateList();
+        toast.success("Tecnologia cadastrada com sucesso!");
+      })
+      .catch((err) => toast.error("Está tecnologia já existe"));
   };
 
   return (
@@ -51,14 +54,14 @@ const ModalAddTech = ({
           <Input
             label="Nome"
             register={register}
-            name="name"
+            name="title"
             error={errors.name?.message}
             placeholder="Tecnologia"
           />
           <div>
             <Label>Selecionar status</Label>
             <ContainerSelect>
-              <select name="Selecionar status" {...register("level")}>
+              <select name="Selecionar status" {...register("status")}>
                 <option>Iniciante</option>
                 <option>Intermediário</option>
                 <option>Avançado</option>

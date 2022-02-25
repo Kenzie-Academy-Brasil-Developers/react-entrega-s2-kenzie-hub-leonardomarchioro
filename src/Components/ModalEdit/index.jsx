@@ -12,18 +12,12 @@ import Input from "../Input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import api from "../../Services/api";
 
-const ModalEdit = ({
-  setEditAct,
-  setTechList,
-  techList,
-  cardEditNow,
-  setIdCard,
-  idCard,
-}) => {
+const ModalEdit = ({ setEditAct, cardEditNow, token, updateList }) => {
   const schema = yup.object().shape({
-    name: yup.string(),
-    level: yup.string(),
+    title: yup.string(),
+    status: yup.string(),
   });
 
   const {
@@ -33,30 +27,37 @@ const ModalEdit = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const removeTech = () => {
-    const update = techList.find((tech) => tech === cardEditNow);
-    const remove = techList.filter((tech) => tech !== update);
-    setTechList(remove);
-    setEditAct(false);
-    toast.success("Tecnologia removida com sucesso");
+    api
+      .delete(`/users/techs/${cardEditNow.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => {
+        setEditAct(false);
+        updateList();
+        toast.success("Tecnologia removida com sucesso!");
+      })
+      .catch((_) => toast.error("Falha ao tentar remover"));
   };
 
   const EditTech = (data) => {
-    setIdCard(idCard + 1);
-    const update = techList.find((tech) => tech === cardEditNow);
-    const remove = techList.filter((tech) => tech !== update);
-
-    if (data.name.length < 1) {
-      data.name = cardEditNow.name;
-    }
-    addTech(data, remove);
+    api
+      .put(`/users/techs/${cardEditNow.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => {
+        setEditAct(false);
+        updateList();
+        toast.success("Tecnologia atualizada com sucesso!");
+      })
+      .catch((_) => toast.error("Falha na atualização"));
   };
 
-  const addTech = (data, remove) => {
-    setTechList([...remove, { ...data, id: idCard }]);
-    setEditAct(false);
-    toast.success("Tecnologia atualizada com sucesso");
-  };
   return (
     <ContainerModal>
       <Modal>
@@ -74,14 +75,14 @@ const ModalEdit = ({
           <Input
             label="Nome do projeto"
             register={register}
-            name="name"
+            name="title"
             error={errors.name?.message}
-            placeholder={cardEditNow.name}
+            value={cardEditNow.title}
           />
           <div>
             <Label>Selecionar status</Label>
             <ContainerSelect>
-              <select name="Status" {...register("level")}>
+              <select name="Status" {...register("status")}>
                 <option>Iniciante</option>
                 <option>Intermediário</option>
                 <option>Avançado</option>

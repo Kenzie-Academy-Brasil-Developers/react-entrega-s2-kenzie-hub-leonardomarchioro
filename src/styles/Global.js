@@ -41,6 +41,25 @@ export const GlobalStyle = createGlobalStyle`
     .Toastify__toast-theme--light {
     background-color: var(--grey-2);
   }
+  * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--grey-1) var(--grey-4);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--grey-4);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--grey-4);
+    border-radius: 20px;
+    border: 2px solid var(--grey-1);
+}
 `;
 
 export const colorPrimary = "#FF577F";

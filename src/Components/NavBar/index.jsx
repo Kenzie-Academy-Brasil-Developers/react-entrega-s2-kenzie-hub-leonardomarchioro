@@ -4,8 +4,13 @@ import { grey3, grey2 } from "../../styles/Global";
 import { useHistory } from "react-router-dom";
 import { NavBar } from "./style";
 
-const NavBarFixed = () => {
+const NavBarFixed = ({ setAuthentic }) => {
   const history = useHistory();
+
+  const handleLogout = () => {
+    setAuthentic(false);
+    return localStorage.clear();
+  };
 
   return (
     <>
@@ -16,9 +21,7 @@ const NavBarFixed = () => {
           type="button"
           style={grey3}
           hover={grey2}
-          onClick={() => {
-            history.push("/");
-          }}
+          onClick={handleLogout}
         />
       </NavBar>
     </>

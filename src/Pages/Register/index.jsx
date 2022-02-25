@@ -5,13 +5,14 @@ import InputPassword from "../../Components/InputPassword";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { Container, ContainerButton } from "./styles";
 import { toast } from "react-toastify";
 import { colorPrimary, primary50, grey3, grey2 } from "../../styles/Global";
 import Logo from "../../assets/logo";
+import api from "../../Services/api";
 
-const Register = () => {
+const Register = ({ authentic }) => {
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -42,11 +43,28 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleLogin = (data) => {
-    history.push("/");
-    console.log(data);
-    toast.success("Cadastro feito com successo!");
+  const handleLogin = ({ name, email, password, module }) => {
+    const register = {
+      name,
+      email,
+      password,
+      course_module: module,
+      bio: "not",
+      contact: "not",
+    };
+
+    api
+      .post("/users", register)
+      .then((_) => {
+        toast.success("Cadastro feito com successo!");
+        history.push("/");
+      })
+      .catch((err) => toast.error("Email já existente, tente outra vez"));
   };
+
+  if (authentic) {
+    return <Redirect to="/home" />;
+  }
 
   return (
     <Container>

@@ -7,16 +7,32 @@ import ListTechs from "../../Components/ListTechs";
 import { useState } from "react";
 import ModalAddTech from "../../Components/ModalAddTech";
 import ModalEdit from "../../Components/ModalEdit";
+import { Redirect } from "react-router-dom";
+import api from "../../Services/api";
+import { toast } from "react-toastify";
 
-const Home = () => {
-  const [techList, setTechList] = useState([]);
+const Home = ({ authentic, setAuthentic }) => {
+  const [infosUser] = useState(
+    JSON.parse(localStorage.getItem("@Kenziehub:infoUser")) || ""
+  );
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Kenziehub:tokenUser")) || ""
+  );
+  const [techList, setTechList] = useState(infosUser.techs);
   const [addTech, setAddTech] = useState(false);
   const [editAct, setEditAct] = useState(false);
-  const [idCard, setIdCard] = useState(0);
   const [cardEditNow, setCardEditNow] = useState();
 
   const addNewTech = () => {
     setAddTech(true);
+  };
+
+  const updateList = () => {
+    api
+      .get(`https://kenziehub.herokuapp.com/users/${infosUser.id}`)
+      .then((res) => {
+        setTechList(res.data.techs);
+      });
   };
 
   const editTech = (id) => {
@@ -25,10 +41,14 @@ const Home = () => {
     setCardEditNow(edit);
   };
 
+  if (!authentic) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <Body>
-      <NavBarFixed />
-      <Header userName={"Nome Teste"} module={"Módulo Teste"} />
+      <NavBarFixed setAuthentic={setAuthentic} />
+      <Header userName={infosUser.name} module={infosUser.course_module} />
       <main>
         <ContainerAddTech>
           <h2>Tecnologias</h2>
@@ -45,20 +65,17 @@ const Home = () => {
       {addTech && (
         <ModalAddTech
           setAddTech={setAddTech}
-          setTechList={setTechList}
-          techList={techList}
-          setIdCard={setIdCard}
-          idCard={idCard}
+          token={token}
+          infosUser={infosUser}
+          updateList={updateList}
         />
       )}
       {editAct && (
         <ModalEdit
           setEditAct={setEditAct}
-          setTechList={setTechList}
-          techList={techList}
           cardEditNow={cardEditNow}
-          setIdCard={setIdCard}
-          idCard={idCard}
+          token={token}
+          updateList={updateList}
         />
       )}
     </Body>
