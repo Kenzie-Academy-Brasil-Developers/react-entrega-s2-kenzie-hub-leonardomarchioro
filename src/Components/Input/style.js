@@ -45,4 +45,10 @@ export const ContainerInput = styled.div`
     font-size: 12px;
     font-weight: 600;
   }
+
+  @media (max-width: 430px) {
+    input {
+      width: 255px;
+    }
+  }
 `;

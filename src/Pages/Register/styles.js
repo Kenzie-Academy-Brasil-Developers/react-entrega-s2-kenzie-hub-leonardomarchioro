@@ -59,8 +59,20 @@ export const Container = styled.div`
   form div {
     margin: 0px;
   }
+
+  @media (max-width: 430px) {
+    form {
+      width: 300px;
+    }
+  }
 `;
 
 export const ContainerButton = styled.section`
   margin-top: 22px;
+
+  @media (max-width: 430px) {
+    button {
+      width: 270px;
+    }
+  }
 `;

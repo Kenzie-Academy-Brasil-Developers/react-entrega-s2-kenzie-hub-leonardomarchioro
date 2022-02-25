@@ -44,14 +44,15 @@ export const Container = styled.div`
     color: var(--grey-0);
   }
 
-  button {
+  section button {
     background-color: transparent;
     border: transparent;
     position: relative;
     right: 20px;
+    width: 15px;
   }
 
-  button svg {
+  section button svg {
     color: var(--grey-0);
   }
 
@@ -62,5 +63,12 @@ export const Container = styled.div`
     color: var(--grey-1);
     font-size: 12px;
     font-weight: 600;
+  }
+  @media (max-width: 430px) {
+    width: 270px;
+
+    input {
+      width: 255px;
+    }
   }
 `;

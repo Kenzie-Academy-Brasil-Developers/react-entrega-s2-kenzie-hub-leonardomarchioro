@@ -29,4 +29,17 @@ export const Container = styled.div`
     font-weight: 600;
     margin: 34px 0px 22px 0px;
   }
+
+  @media (max-width: 430px) {
+    form {
+      width: 300px;
+      height: 520px;
+    }
+    button {
+      width: 270px;
+    }
+    form div {
+      width: 270px;
+    }
+  }
 `;

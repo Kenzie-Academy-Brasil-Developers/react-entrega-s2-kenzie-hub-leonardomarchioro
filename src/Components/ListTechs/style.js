@@ -31,4 +31,11 @@ export const ContainerListCards = styled.ul`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+
+  @media (max-width: 820px) {
+    width: 430px;
+  }
+  @media (max-width: 530px) {
+    width: 300px;
+  }
 `;

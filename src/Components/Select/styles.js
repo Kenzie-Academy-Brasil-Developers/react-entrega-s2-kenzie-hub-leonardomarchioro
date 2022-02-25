@@ -28,6 +28,14 @@ export const ContainerSelect = styled.section`
   select:focus {
     color: var(--grey-0);
   }
+
+  @media (max-width: 430px) {
+    width: 255px;
+
+    select {
+      width: 255px;
+    }
+  }
 `;
 export const Label = styled.label`
   width: 100%;

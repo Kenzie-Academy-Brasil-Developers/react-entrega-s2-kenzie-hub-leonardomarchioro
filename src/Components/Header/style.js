@@ -19,4 +19,17 @@ export const ContainerHeader = styled.header`
     font-weight: 600;
     color: var(--grey-1);
   }
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+    h1 {
+      margin-left: 30px;
+    }
+    span {
+      margin-left: 30px;
+    }
+  }
 `;

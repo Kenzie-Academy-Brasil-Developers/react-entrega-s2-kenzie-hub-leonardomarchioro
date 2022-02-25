@@ -9,7 +9,6 @@ import ModalAddTech from "../../Components/ModalAddTech";
 import ModalEdit from "../../Components/ModalEdit";
 import { Redirect } from "react-router-dom";
 import api from "../../Services/api";
-import { toast } from "react-toastify";
 
 const Home = ({ authentic, setAuthentic }) => {
   const [infosUser] = useState(
