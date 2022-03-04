@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
 
   header {
+    margin-top: 60px;
     display: flex;
     align-items: center;
     margin-bottom: 33px;
@@ -27,6 +28,7 @@ export const Container = styled.div`
     font-weight: 600;
   }
   form {
+    margin: 30px 0px 30px 0px;
     background-color: var(--grey-3);
     display: flex;
     flex-direction: column;
@@ -38,6 +40,7 @@ export const Container = styled.div`
     width: 370px;
   }
   form header {
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,8 +64,16 @@ export const Container = styled.div`
   }
 
   @media (max-width: 430px) {
+    margin: 20px 0px 20px 0px;
+    header {
+      width: 300px;
+    }
     form {
       width: 300px;
+
+      header {
+        width: 100%;
+      }
     }
   }
 `;

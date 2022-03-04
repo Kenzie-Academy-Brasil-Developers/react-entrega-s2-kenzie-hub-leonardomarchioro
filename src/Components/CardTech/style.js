@@ -13,6 +13,7 @@ export const ContainerCard = styled.li`
 
   &:hover {
     background-color: var(--grey-2);
+    cursor: pointer;
   }
   h1 {
     font-size: 14px;
