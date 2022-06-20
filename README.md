@@ -2,7 +2,7 @@
 
 <a href="https://react-entrega-s2-kenzie-hub-leonardomarchioro.vercel.app/" alt="link site">
   
-![Link na web](https://img.shields.io/badge/web-0A66C2?style=for-the-badge&logo=web&logoColor=white)
+![Link na web](https://img.shields.io/badge/web-ff577f?style=for-the-badge&logo=web&logoColor=black)
   
 </a>
 
